@@ -1,41 +1,44 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Pattern_20 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int row = 1;
-        int star = n/2;
-        int space = 1;
 
-        while(row <= n)
-        {
-            // spaces
-            int col1 = 1;
-            while(col1 <= star)
-            {
-                System.out.print("  ");
-                col1++;
-            }
-            // Then Star
-            int col2 = 1;
-            while(col2 <= space)
-            {
-                System.out.print("* ");
-                col2++;
-            }
-            if(row < n/2+1)
-            {
-                space += 2;
-                star--;
-            }
-            else{
-                space -= 2;
-                star++;
-            }
-            System.out.println();
-            row++;
-        }
-        sc.close();
-        }
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int row = 1;
+		int space1 = n / 2;
+		int space2 = -1;
+		while (row <= n) {
+			// space1
+			for (int i = 1; i <= space1; i++) {
+				System.out.print("  ");
+			}
+
+			// star
+			System.out.print("* ");
+
+			// space2
+			if (space2 > 0) {
+				for (int j = 1; j <= space2; j++) {
+					System.out.print("  ");
+				}
+				System.out.print("* ");
+			}
+
+			if (row <= n / 2) {
+				space1--;
+				space2 += 2;
+			} else {
+				space1++;
+				space2 -= 2;
+			}
+
+			System.out.println();
+			row++;
+
+		}
+		sc.close();
+
+	}
+
 }
